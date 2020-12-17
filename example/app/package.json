@@ -16,7 +16,8 @@
     "redux": "link:../../node_modules/redux",
     "react-redux": "link:../../node_modules/react-redux",
     "search": "link:../..",
-    "search-core": "link:../core"
+    "search-core": "link:../core",
+    "global-context": "link:../global-context"
   },
   "devDependencies": {
     "@babel/plugin-syntax-object-rest-spread": "^7.8.3"

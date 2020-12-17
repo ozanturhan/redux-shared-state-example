@@ -1,4 +1,4 @@
-# React Redux Share State Between Libraries and Application Example
+# React Redux and Context Share State Between Libraries and Application Example
 
 ## Install
 
@@ -6,6 +6,8 @@
 yarn install
 yarn build:core
 yarn build:app
+yarn build:global-context
+yarn build:all // build all libraries and application
 yarn start:app
 ```
 
@@ -36,26 +38,42 @@ export const useCustomHook = () => {
 }
 ```
 
+```js
+// file: ./examples/core/src/hooks
+import { useGlobalState } from 'global-context' // use global context from core module
+
+export const useCustomHookWithContext = () => {
+  const [{searchText}] = useGlobalState()
+  return searchText;
+}
+```
+
 In the end of the day we could reach global state from ui library, core library and application.
 
 ## Usage
 ```jsx
 import React from 'react'
 import { useSelector } from 'react-redux'
-import { getSearchText } from 'search' // from ui library
-import { useCustomHook } from 'search-core' // from core library
+import { getSearchText } from 'search'
+import { useCustomHook, useCustomHookWithContext } from 'search-core'
+import { useGlobalState } from 'global-context'
 
 export const Content = () => {
-  const searchText = useSelector(getSearchText) // use redux selector in application
-  const searchText2 = useCustomHook() // use redux in core module
+  const searchText = useSelector(getSearchText)
+  const searchText2 = useCustomHook()
+  const [state] = useGlobalState(); // usage example for application from global-context mobulde (context api)
+  const searchTextFromGlobalStateViaCoreModule = useCustomHookWithContext(); // usage example for global contex with context api from core module
 
   return (
     <div>
-      <div>Search Text From App: {searchText}</div>
-      <div>Search Text From Core: {searchText2}</div>
+      <div>Search Text From App (Redux): {searchText}</div>
+      <div>Search Text From Core (Redux): {searchText2}</div>
+      <div>Search Text From Global Context: {state.searchText}</div>
+      <div>Search Text From Global Context via core module: {searchTextFromGlobalStateViaCoreModule}</div>
     </div>
   )
 }
+
 
 ```
 
@@ -66,5 +84,21 @@ import SearchInput from "search";
 export const Header = () =>{
   return <SearchInput  />
 }
+
+```
+
+```jsx
+const SearchInput = ({ search }) => {
+  const [{}, dispatch,] = useGlobalState();
+
+  return <div>
+    // redux example
+    Redux Search: <input type='text' onInput={(e) => search(e.target.value)} />
+    // context example
+    Context Search:  <input type='text' onInput={(e) => dispatch({type: CHANGE_SEARCH, payload: e.target.value})} />
+  </div>
+}
+
+export default connect(null, { search })(SearchInput)
 
 ```

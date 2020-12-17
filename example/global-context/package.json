@@ -1,16 +1,13 @@
 {
-  "name": "search-core",
+  "name": "global-context",
   "version": "1.0.0",
-  "main": "dist/index.js",
   "scripts": {
     "build": "rm -rf ./dist && webpack --progress --colors"
   },
+  "main": "dist/index.js",
   "devDependencies": {
     "react": "link:../../node_modules/react",
     "react-dom": "link:../../node_modules/react-dom",
-    "redux": "link:../../node_modules/redux",
-    "react-redux": "link:../../node_modules/react-redux",
-    "global-context": "link:../global-context",
     "webpack": "4.44.1",
     "webpack-cli": "3.3.12",
     "webpack-node-externals": "2.5.1",
