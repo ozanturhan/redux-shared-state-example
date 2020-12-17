@@ -1,0 +1,6 @@
+dist
+node_modules
+example/app/build
+example/core/dist
+example/app/node_modules
+example/core/node_modules
