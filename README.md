@@ -18,12 +18,12 @@ yarn start:app
 ```jsx
 import React from 'react'
 import { useSelector } from 'react-redux'
-import { getSearchText } from 'search'
-import { useCustomHook } from 'search-core'
+import { getSearchText } from 'search' // from ui library
+import { useCustomHook } from 'search-core' // from core library
 
 export const Content = () => {
-  const searchText = useSelector(getSearchText)
-  const searchText2 = useCustomHook()
+  const searchText = useSelector(getSearchText) // use redux selector in application
+  const searchText2 = useCustomHook() // use redux in core module
 
   return (
     <div>
