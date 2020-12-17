@@ -9,6 +9,11 @@ yarn build:app
 yarn start:app
 ```
 
+## Projects
+* app (application - ./example/app/package.json)
+* core (library - ./example/core/package.json)
+* search (library - ./package.json)
+
 ## Usage
 ```jsx
 import React from 'react'
