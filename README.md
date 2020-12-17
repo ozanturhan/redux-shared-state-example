@@ -15,7 +15,7 @@ yarn start:app
 * search (ui-library - ./package.json)
 
 ## Explanation
-We should combineReducers in application. We import ui reducers in application store.js.
+We import ui reducers in the application store.js because in this case we should use combineReducers in the application.
 
 ```js
 import { combineReducers, createStore } from 'redux'
