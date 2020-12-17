@@ -14,6 +14,30 @@ yarn start:app
 * core (library - ./example/core/package.json)
 * search (library - ./package.json)
 
+## Explanation
+We should combineReducers in application. We import ui reducers in application store.js.
+
+```js
+import { combineReducers, createStore } from 'redux'
+import { uiReducers } from 'search' // ui reducers (state) from ui libraru
+import todo from './reducers' // reducers(state) from application
+
+export default createStore(combineReducers({ ...uiReducers, todo }))
+```
+
+We can also reach state from core library like that:
+
+```js
+// file: ./examples/core/src/hooks
+import { useSelector } from 'react-redux'
+
+export const useCustomHook = () => {
+  return useSelector((state) => state.search.searchText) // this state generated in search (ui) library
+}
+```
+
+In the end of the day we could reach global state from ui library, core library and application.
+
 ## Usage
 ```jsx
 import React from 'react'
@@ -44,7 +68,3 @@ export const Header = () =>{
 }
 
 ```
-
-## License
-
-MIT © [](https://github.com/)
