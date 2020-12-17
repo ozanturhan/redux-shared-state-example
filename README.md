@@ -12,7 +12,7 @@ yarn start:app
 ## Projects
 * app (application - ./example/app/package.json)
 * core (library - ./example/core/package.json)
-* search (library - ./package.json)
+* search (ui-library - ./package.json)
 
 ## Explanation
 We should combineReducers in application. We import ui reducers in application store.js.
