@@ -26,7 +26,7 @@
     "build:global-context": "cd example/global-context && yarn install && yarn run build",
     "build:all": "yarn build && yarn build:app && yarn build:core && yarn build:global-context",
     "prettier": "prettier --write \"**/*.js\"",
-    "clear": "rm -rf node_modules && rm -rf dist && rm -rf example/app/node_modules && rm -rf example/app/build && rm -rf example/core/dist && rm -rf example/core/node_modules"
+    "clear": "rm -rf node_modules && rm -rf dist && rm -rf example/app/node_modules && rm -rf example/app/build && rm -rf example/core/dist && rm -rf example/core/node_modules && rm -rf example/global-context/node_modules && rm -rf example/global-context/dist"
   },
   "peerDependencies": {
     "react": "^16.0.0"
